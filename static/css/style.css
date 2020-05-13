@@ -6,3 +6,11 @@
         color:firebrick;
         text-align: center;
     }
+
+    #footer {
+        background-color: #f3e5f5;
+        padding: 20px;
+        position: absolute;
+        bottom: 0;
+        width: 100%; 
+    }
