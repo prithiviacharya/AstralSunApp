@@ -1,59 +1,84 @@
 {% extends "layout.html" %}
-
+{%block home%}active{%endblock%}
 {% block content %}
-  <div class="row">
-         <div class="col-sm-4"
-             <form>
-               <label>City:</label>
-               <select>
-                 <option>Kathmandu</option>
-                 <option>Texas</option>
-               </select>
-               <br>
-               <label>Date</label>
-               <input type="date" name="startdate">
-              </br>
-              <button type="submit">Click</button>
-             </form>
-  </div>
-
-<div class="col-sm-8">
-  <table style="width:100%" class="table table-condensed">
-      <tr>
-    <th> City Name</th>
-    <th>CIty Region</th>
-    <th>Timezone</th>
-    <th>Longitude</th>
-    <th>Latitude</th>
-     </tr>
-
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-   
-  </tr>
-
-  </table>
-</div>
-  </div>
-
+<!-- Form and Table -->
 <div class="row">
-    <table style="width:100%" class="table table-condensed">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Dawn</th>
-        <th>Sunrise</th>
-        <th>Sunset</th>
-        <th>Dusk</th>
-      </tr>
-    </thead>
-  </table>
+	<div class="col-sm-4 bordermaker">
+		<form id='cityform'>
+		  <div class="form-group">
+		    <label>City</label>
+			<select id='cityselect' class="form-control">
+				{% for i in cities %}
+					<option>{{i}}</option>
+				{%endfor%}
+			</select>
+      </div>    
+		  <div class="form-group">
+		    <label>Date</label>
+		    <input id='citydate' type="date" class="form-control" required>
+		  </div>
+
+		  <button type="submit" class="btn btn-primary">Click</button>
+		</form>
+	</div>
+
+	<div class="col-sm-8 bordermaker">
+		<br>
+		<br>
+		<br>
+		<table style="width:100%" class="table table-condensed">
+			<tr>
+				<th>City Name</th>
+				<th>City Region</th>
+				<th>Timezone</th>
+				<th>Longitude</th>
+				<th>Latitude</th>
+
+			</tr>
+			<tr>
+				<td>{{table1.city}}</td>
+				<td>{{table1.region}}</td>
+				<td>{{table1.timezone}}</td>
+				<td>{{table1.long}}</td>
+				<td>{{table1.lat}}</td>
+
+			</tr>
+
+		</table>
+		<br>
+		<br>
+	</div>
+	
+
 </div>
+<div class="row">
+	<br>
+	<br>
+</div>
+<!-- Datatable -->
+<div class="row">
+	<table style="width:100%" class="table table-condensed">
+            <tr>
+                  <th>Date</th>
+                  <th>Dawn</th>
+                  <th>Sunrise</th>
+                  <th>Noon</th>
+                  <th>Sunset</th>
+                  <th>Dusk</th>
+            </tr>
+            <tr>
+				<td>{{table2.date}}</td>
+				<td>{{table2.dawn}}</td>
+				<td>{{table2.sunrise}}</td>
+				<td>{{table2.noon}}</td>
+				<td>{{table2.sunset}}</td>
+				<td>{{table2.dusk}}</td>
+					
+			</tr>
 
+	</table>
 
-    
+</div>  
+
+<script src="/static/js/home.js"></script>
 {% endblock %}
